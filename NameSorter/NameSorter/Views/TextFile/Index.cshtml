@@ -1,0 +1,41 @@
+﻿@model NameSorter.ViewModel.SortViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="TextFile" class="col-sm-3 col-form-label">Please upload file here</label>
+        <div class="col-sm-12">
+            <div class="custom-file">
+                <input asp-for="TextFile" class="custom-file-input" type="file">
+                <label class="custom-file-label">Choose File...</label>
+                <span asp-validation-for="TextFile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="m-3">
+            <button id="btnUpload" class="btn btn-primary" asp-controller="TextFile" asp-action="ReadUploadFile" type="submit" value="Upload">  
+                Upload
+            </button>
+        </div>
+    </div>
+</form>
+
+<script>
+    // Run the spinner when the user click the upload button 
+    $(document).ready(function () {
+        $("#btnUpload").click(function () {
+            // add spinner to button
+            $(this).html(
+                `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+            );
+        });
+    });
+
+    //This will show the file name in when the user upload a file
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $('.custom-file-label').html(fileName);
+    });
+</script>

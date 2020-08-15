@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NameSorter.Repository.Interface;
+using NameSorter.Repository.Service;
 
 namespace NameSorter
 {
@@ -24,6 +26,13 @@ namespace NameSorter
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //Dependecy Injection
+            services.AddScoped<ITextFileRepository, TextFileRepository>();
+            services.AddScoped<INameSortRepository, NameSortRepository>();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +59,7 @@ namespace NameSorter
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=TextFile}/{action=Index}/{id?}");
             });
         }
     }

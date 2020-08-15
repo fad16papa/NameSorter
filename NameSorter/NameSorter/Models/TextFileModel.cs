@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using NameSorter.Helper;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NameSorter.Models
 {
@@ -18,6 +16,7 @@ namespace NameSorter.Models
         [Required(ErrorMessage = "Please upload a text file")]
         [DataType(DataType.Upload)]
         [ValidateFile(new string[] { ".txt" })]
+        [Description("TextFile")]
         public IFormFile TextFile{ get; set; }
         public DateTime DateUnsorted { get; set; }
         public DateTime DateSorted { get; set; }
