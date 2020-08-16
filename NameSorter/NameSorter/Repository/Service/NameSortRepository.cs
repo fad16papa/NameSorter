@@ -55,12 +55,12 @@ namespace NameSorter.Repository.Service
                     givenNameObjectList.RemoveAt(countSplitObject - 1);
 
                     //Instantiate NamesModel 
-                    NamesModel namesModel = new NamesModel
+                    var namesModel = new NamesModel
                     {
                         //get the length on splitObject then subtract by -1 to locate 
-                        //the exact element of lastName then assigned the value to the property of lastName
+                        //the exact element then assigned the value to the property of lastName
                         LastName = splitObject[splitObject.Length - 1].ToString(),
-                        //use string join to create string object from givenNameObjectList array object
+                        //use string join to create single string object from givenNameObjectList array object
                         //then assign the value to the property of FirstName
                         FirstName = string.Join(" ", givenNameObjectList.ToArray())
                     };

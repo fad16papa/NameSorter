@@ -75,7 +75,7 @@ namespace NameSorter.Repository.Service
             try
             {
                 //store the read lines of text file
-                List<string> genericListNames = new List<string>();
+                var genericListNames = new List<string>();
 
                 var result = new StringBuilder();
 
