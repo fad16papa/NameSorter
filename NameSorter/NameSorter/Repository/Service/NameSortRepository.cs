@@ -48,7 +48,7 @@ namespace NameSorter.Repository.Service
                     //count the splitObject 
                     int countSplitObject = splitObject.Count();
 
-                    //convert splitObject array object to list string object
+                    //convert splitObject array to list string object
                     //then remove specific element of list by subtructing the countSplitObject -1 
                     //to locate the exact location of last name 
                     var givenNameObjectList = new List<string>(splitObject);
@@ -76,7 +76,7 @@ namespace NameSorter.Repository.Service
             }
             catch (Exception ex)
             {
-
+                _logger.LogError($"Exception error was caught NameSortRepository:sortGivenName: {ex.Message}");
                 throw ex;
             }      
         }

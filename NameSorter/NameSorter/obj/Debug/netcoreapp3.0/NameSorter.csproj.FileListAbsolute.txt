@@ -108,3 +108,4 @@ D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\staticwebas
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.dll
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.pdb
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.genruntimeconfig.cache
+D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.csprojAssemblyReference.cache

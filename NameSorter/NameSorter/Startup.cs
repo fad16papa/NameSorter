@@ -31,6 +31,7 @@ namespace NameSorter
             services.AddScoped<ITextFileRepository, TextFileRepository>();
             services.AddScoped<INameSortRepository, NameSortRepository>();
 
+            services.AddMemoryCache();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

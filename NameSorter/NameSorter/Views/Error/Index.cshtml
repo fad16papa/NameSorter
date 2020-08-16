@@ -1,12 +1,12 @@
 ﻿@model ErrorModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Modal -->
 <div class="modal fade" id="ErrorLoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-danger" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">@Model.ErrorTitle</h5>
@@ -18,16 +18,22 @@
                 <p>@Model.ErrorMessage</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCommonErrorClose">Close</button>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-
+<script>
+    //This will show the modal when exception error caught
     window.addEventListener('load', function () {
-        $("#ErrorLoginModal").modal('show');
+    $("#ErrorLoginModal").modal('show');
     }, false);
 
+    $("#btnCommonErrorClose").click(function () {
+        $("#ErrorLoginModal").modal('hide');
+
+        //redirect to the Controller/Action Parameter
+        window.location.href = '@Url.Action(Model.RedirectAction,Model.RedirectController)';
+    });
 </script>

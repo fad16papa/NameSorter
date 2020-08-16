@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using NameSorter.Models;
 using NameSorter.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NameSorter.Repository.Service
 {
@@ -54,7 +56,37 @@ namespace NameSorter.Repository.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Exception error was caught at TextFileRepository:ProcessUploadFile: {ex.Message}");
+                throw ex;
+            }
+        }
 
+        /// <summary>
+        /// This will write the sorted name list in a text file.
+        /// </summary>
+        /// <param name="namesModels"></param>
+        /// <returns></returns>
+        public async Task WriteSortedNames(List<NamesModel> namesModels)
+        {
+            try
+            {
+                string path = @"C:\Temp\sorted-names-list.txt";
+
+                if(!File.Exists(path))
+                {
+                    //Create a file to write to
+                    using (StreamWriter streamWriter = File.CreateText(path))
+                    {
+                        foreach (var item in namesModels)
+                        {
+                            await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception error was caught TextFileRepository:WriteSortedNames: {ex.Message}");
                 throw ex;
             }
         }
