@@ -47,11 +47,17 @@ Kindly visit the link to download [.Net Core 3.0](https://dotnet.microsoft.com/d
 
 ### Run Application 
 
-Just double click the application in your desktop and enjoy the game. 
+Just run the application file in local terminal.
 
-![step1](https://user-images.githubusercontent.com/13810195/87908365-d5430380-ca98-11ea-8c02-cd9970bbfcb6.png)
+Just uploadd the text file with given names need to be sorted. 
+![Step1]![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
 
-![step8](https://user-images.githubusercontent.com/13810195/87898583-21824980-ca81-11ea-8136-f6fdf0f79200.PNG)
+Once the uploading done it will show the sorted names by its Last Name
+![Step2]![Capture 2](https://user-images.githubusercontent.com/13810195/90330613-b32d9a00-dfe0-11ea-9329-3eaa03cd8f4d.PNG)
+
+The application will write automatically all names sorted in a text while named sorted-names-list.txt. 
+File path will be: C:\temp\sorted-names-list
+![Step3]![Capture 3](https://user-images.githubusercontent.com/13810195/90330628-d8baa380-dfe0-11ea-9abb-f59b03e6db26.PNG)
 
 ## Built With
 
