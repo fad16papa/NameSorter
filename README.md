@@ -55,7 +55,7 @@ Just uploadd the text file with given names need to be sorted.
 Once the uploading done it will show the sorted names by its Last Name
 ![Step2]![Capture 2](https://user-images.githubusercontent.com/13810195/90330613-b32d9a00-dfe0-11ea-9329-3eaa03cd8f4d.PNG)
 
-The application will also write automatically in a text while all the names list sorted named sorted-names-list.txt. 
+The application will write automatically all names sorted in a text while named sorted-names-list.txt. 
 File path will be: C:\temp\sorted-names-list
 ![Step3]![Capture 3](https://user-images.githubusercontent.com/13810195/90330628-d8baa380-dfe0-11ea-9abb-f59b03e6db26.PNG)
 
