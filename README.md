@@ -47,11 +47,7 @@ Kindly visit the link to download [.Net Core 3.0](https://dotnet.microsoft.com/d
 
 ### Run Application 
 
-Just double click the application in your desktop and enjoy the game. 
-
-![step1](https://user-images.githubusercontent.com/13810195/87908365-d5430380-ca98-11ea-8c02-cd9970bbfcb6.png)
-
-![step8](https://user-images.githubusercontent.com/13810195/87898583-21824980-ca81-11ea-8136-f6fdf0f79200.PNG)
+Just run the application file in local terminal.
 
 ## Built With
 
