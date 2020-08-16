@@ -49,21 +49,24 @@ Kindly visit the link to download [.Net Core 3.0](https://dotnet.microsoft.com/d
 
 Just run the application file in local terminal.
 
+You can visit the link here [NameSorter](https://namesorter20200816224622.azurewebsites.net/)
+
 Just uploadd the text file with given names need to be sorted. 
 ![Step1]![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
 
 Once the uploading done it will show the sorted names by its Last Name
 ![Step2]![Capture 2](https://user-images.githubusercontent.com/13810195/90330613-b32d9a00-dfe0-11ea-9329-3eaa03cd8f4d.PNG)
 
-The application will write automatically all names sorted in a text while named sorted-names-list.txt. 
-File path will be: C:\temp\sorted-names-list
-![Step3]![Capture 3](https://user-images.githubusercontent.com/13810195/90330628-d8baa380-dfe0-11ea-9abb-f59b03e6db26.PNG)
+Click the link download file to download the text file named sorted-names-list.txt. 
+![Step3]![Capture](https://user-images.githubusercontent.com/13810195/90337344-7a0f1d00-e014-11ea-9844-5e48bdc78aab.PNG)
+
 
 ## Built With
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - IDE 
 * [.Net Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) - .Net Core Run Time and Developer Pack
 * [Git Hub](https://github.com/fad16papa/NameSorter) - Code Repository
+* [Microsoft Azure](https://azure.microsoft.com/en-us/)
 
 ## Versioning
 
