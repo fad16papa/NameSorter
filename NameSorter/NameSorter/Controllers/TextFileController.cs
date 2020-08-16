@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using NameSorter.Helper;
 using NameSorter.Models;
 using NameSorter.Repository.Interface;
 using NameSorter.ViewModel;
@@ -52,7 +54,7 @@ namespace NameSorter.Controllers
         /// <param name="sortViewModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> ReadUploadFile(SortViewModel sortViewModel)
+        public IActionResult ReadUploadFile(SortViewModel sortViewModel)
         {
             try
             {
@@ -73,8 +75,8 @@ namespace NameSorter.Controllers
                     _logger.LogInformation("Done sorting name list");
 
                     //store the namesModels object lsit to a memorycache
-                    await _textFileRepository.WriteSortedNames(namesModels);
-                    _logger.LogInformation("Done writing sorted names in a file sorted-names-list.txt");
+                    _textFileRepository.CreateCacheMemory(namesModels);
+
                 }
                 else
                 {
@@ -84,6 +86,47 @@ namespace NameSorter.Controllers
                 //assigned the value to NamesModels property of SortViewModel
                 sortViewModel.NamesModels = namesModels;
                 return View("ReadUploadFile", sortViewModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception error was caught: {ex.Message}");
+
+                ErrorModel errorModel = new ErrorModel
+                {
+                    ErrorTitle = "System Error!",
+                    ErrorMessage = string.Format("We have encountered an Error. \nPlease contact your System Administrator."),
+                    RedirectAction = "Index",
+                    RedirectController = "TextFile"
+                };
+
+                return RedirectToAction("Index", "Error", errorModel);
+            }
+        }
+
+        /// <summary>
+        /// This will download the file name sorted-names-list.txt from the memory cache
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> DownloadCacheSortedList()
+        {
+            try
+            {
+                var cacheEntry = _memoryCache.Get<List<NamesModel>>(CacheKeys.Entry);
+
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    StreamWriter streamWriter = new StreamWriter(stream);
+                    foreach (var item in cacheEntry)
+                    {
+                        await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
+                    }
+
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                    //return File(stream.ToArray(), "text/plain", "file.txt");
+                    return File(stream.ToArray(), "text/plain", "sorted-names-list.txt");
+                }  
             }
             catch (Exception ex)
             {

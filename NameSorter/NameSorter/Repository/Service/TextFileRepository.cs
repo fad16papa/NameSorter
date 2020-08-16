@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using NameSorter.Helper;
 using NameSorter.Models;
 using NameSorter.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NameSorter.Repository.Service
 {
@@ -19,16 +20,51 @@ namespace NameSorter.Repository.Service
     {
         #region Properties
         private readonly ILogger<TextFileRepository> _logger;
+        private readonly IMemoryCache _memoryCache;
         #endregion
 
         #region Contructor
-        public TextFileRepository(ILogger<TextFileRepository> logger)
+        public TextFileRepository(ILogger<TextFileRepository> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
+            _memoryCache = memoryCache;
+        }
+
+        /// <summary>
+        /// This will create a cache memory for the sorted list names
+        /// </summary>
+        /// <param name="namesModels"></param>
+        /// <returns></returns>
+        public void CreateCacheMemory(List<NamesModel> namesModels)
+        {
+           var namesModelsList = new List<NamesModel>();
+
+            try
+            {
+                //Look for cache key 
+                if (!_memoryCache.TryGetValue(CacheKeys.Entry, out namesModelsList))
+                {
+                    //Key not in cache, so get data
+                    namesModelsList = namesModels;
+
+                    // Set cache options.
+                    var cacheEntryOptions = new MemoryCacheEntryOptions()
+                        // Keep in cache for this time, reset time if accessed.
+                        .SetSlidingExpiration(TimeSpan.FromMinutes(60));
+
+                    // Save data in cache.
+                    _memoryCache.Set(CacheKeys.Entry, namesModelsList, cacheEntryOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception error was caught at TextFileRepository:CreateCacheMemory: {ex.Message}");
+                throw ex;
+            }
         }
         #endregion
 
-            
+
         /// <summary>
         /// Description: This will read the uploaded text file and return an IEnumerable<NameModel> object
         /// </summary>
@@ -57,47 +93,6 @@ namespace NameSorter.Repository.Service
             catch (Exception ex)
             {
                 _logger.LogError($"Exception error was caught at TextFileRepository:ProcessUploadFile: {ex.Message}");
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// This will write the sorted name list in a text file.
-        /// </summary>
-        /// <param name="namesModels"></param>
-        /// <returns></returns>
-        public async Task WriteSortedNames(List<NamesModel> namesModels)
-        {
-            try
-            {
-                string path = @"C:\Temp\sorted-names-list.txt";
-
-                if(!File.Exists(path))
-                {
-                    //Create a file to write to
-                    using (StreamWriter streamWriter = File.CreateText(path))
-                    {
-                        foreach (var item in namesModels)
-                        {
-                            await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
-                        }
-                    }
-                }
-                else
-                {
-                    //Create a file to write to
-                    using (StreamWriter streamWriter = File.CreateText(path))
-                    {
-                        foreach (var item in namesModels)
-                        {
-                            await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Exception error was caught TextFileRepository:WriteSortedNames: {ex.Message}");
                 throw ex;
             }
         }

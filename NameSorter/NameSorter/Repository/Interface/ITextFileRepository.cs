@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using NameSorter.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NameSorter.Repository.Interface
 {
@@ -16,6 +13,6 @@ namespace NameSorter.Repository.Interface
     {
         List<string> ProcessUploadFile(IFormFile textFileModel);
 
-        Task WriteSortedNames(List<NamesModel> namesModels);
+        void CreateCacheMemory(List<NamesModel> namesModels);
     }
 }
