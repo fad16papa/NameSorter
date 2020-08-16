@@ -2,6 +2,36 @@
 
 Build a name sorter. Given a set of names, order that set first by last name, then by any given names the person may have. A name must have at least 1 given name and may have up to 3 given names. Example Usage Given a file called unsorted-names-list.txt containing the following list of names: 
 
+Janet Parsons  Vaughn Lewis  
+Adonis Julius Archer  
+Shelby Nathan Yoder  
+Marin Alvarez  
+London Lindsey  
+Beau Tristan 
+Bentley  
+Leo Gardner 
+Hunter Uriah 
+Mathew Clarke  
+Mikayla Lopez  
+Frankie Conner Ritter 
+ 
+Program should read names from a text file. 
+ 
+Should print the sorted names to screen 
+ 
+Marin Alvarez  
+Adonis Julius Archer  
+Beau Tristan Bentley  
+Hunter Uriah Mathew Clarke  
+Leo Gardner  
+Vaughn Lewis  
+London Lindsey  
+Mikayla Lopez  
+Janet Parsons  
+Frankie Conner 
+Ritter  
+Shelby Nathan Yoder 
+
 For more information kindly visit [Sort Algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#:~:text=In%20computer%20science%2C%20a%20sorting,numerical%20order%20and%20lexicographical%20order.).
 
 ## Getting Started
