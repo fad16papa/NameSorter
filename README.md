@@ -64,7 +64,7 @@ Click the link download file to download the text file named sorted-names-list.t
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - IDE 
 * [.Net Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) - .Net Core Run Time and Developer Pack
 * [Git Hub](https://github.com/fad16papa/NameSorter) - Code Repository
-* [Microsoft Azure](https://azure.microsoft.com/en-us/)
+* [Microsoft Azure](https://azure.microsoft.com/en-us/) - Cloud Service
 
 ## Versioning
 
