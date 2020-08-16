@@ -83,6 +83,17 @@ namespace NameSorter.Repository.Service
                         }
                     }
                 }
+                else
+                {
+                    //Create a file to write to
+                    using (StreamWriter streamWriter = File.CreateText(path))
+                    {
+                        foreach (var item in namesModels)
+                        {
+                            await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
