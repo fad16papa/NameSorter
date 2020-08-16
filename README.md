@@ -51,7 +51,7 @@ Just run the application file in local terminal.
 
 You can visit the link here [NameSorter](https://namesorter20200816224622.azurewebsites.net/)
 
-Just uploadd the text file with given names need to be sorted. 
+Just upload the text file with given names need to be sorted. 
 ![Step1]![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
 
 Once the uploading done it will show the sorted names by its Last Name
