@@ -65,7 +65,7 @@ If you download the file you may run the application via local terminal or you c
 
 ![Capture 3](https://user-images.githubusercontent.com/13810195/90351674-81194800-e073-11ea-9eeb-0bf743eb37f7.PNG)
 
-## Step5 You can download the sorted file as ascending by clicking the Download File Link.
+## Step5 You may download the sorted file as ascending by last name by clicking the Download File Link.
 
 ![Capture 4](https://user-images.githubusercontent.com/13810195/90351742-b9208b00-e073-11ea-9290-2dab4a1ae88f.PNG)
 
