@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -44,51 +45,78 @@ namespace NameSorter.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
-
-        /// <summary>
-        /// This will process the uploaded file then sort it by last name ascending and display it to view ReadUploadFile
-        /// </summary>
-        /// <param name="sortViewModel"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult ReadUploadFile(SortViewModel sortViewModel)
-        {
             try
             {
-                //create object List of NamesModel
-                var namesModels = new List<NamesModel>();
-
-                //create object List of string
-                var genericList = new List<string>(); 
-
-                if (ModelState.IsValid)
-                {
-                    //call the textfilerespository then return the List<NameModel>
-                    genericList = _textFileRepository.ProcessUploadFile(sortViewModel.TextFile);
-                    _logger.LogInformation($"Done processing upload file {sortViewModel.TextFile}");
-
-                    //call the nameSortRepository to process the genericList 
-                    namesModels = _nameSortRepository.sortGivenName(genericList);
-                    _logger.LogInformation("Done sorting name list");
-
-                    //store the namesModels object lsit to a memorycache
-                    _textFileRepository.CreateCacheMemory(namesModels);
-
-                }
-                else
-                {
-                    return View("Index");
-                } 
-
-                //assigned the value to NamesModels property of SortViewModel
-                sortViewModel.NamesModels = namesModels;
-                return View("ReadUploadFile", sortViewModel);
+                return View();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Exception error was caught: {ex.Message}");
+                _logger.LogError($"Exception error was caught TextFileController:Index {ex.Message}");
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// This will get the sorted list data in memory cache
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> ViewLoadSortedData(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        {
+            try
+            {
+                ViewData["CurrentSort"] = sortOrder;
+                ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+                if (searchString != null)
+                {
+                    pageNumber = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewData["CurrentFilter"] = searchString;
+
+                //Get the data in memory cache 
+                var sortedDataList = _memoryCache.Get<List<NamesModel>>(CacheKeys.Entry);
+
+                //convert the object to Iqueryable 
+                var model = sortedDataList.AsQueryable();
+
+                //search the list of users base in searchString 
+                //filter by lastname and firstname
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    model = sortedDataList.AsQueryable()
+                    .Where(x => x.LastName.Contains(searchString) || x.FirstName.Contains(searchString));
+                }
+
+                //implementing sorting, use switch case for sorting
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        model = model.OrderByDescending(s => s.LastName);
+                        break;
+                    case "Date":
+                        model = model.OrderByDescending(s => s.FirstName);
+                        break;
+                    default:
+                        model = model.OrderBy(s => s.LastName);
+                        break;
+                }
+
+                //declare data size populated per page
+                int pageSize = 15;
+
+                //return the List NamesModel thru PaginatedList then populate the data in ViewLoadSortedData
+                return View(await PaginatedList<NamesModel>.CreateAsync(model, pageNumber ?? 1, pageSize));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception error was caught TextFileController:ViewLoadSoratedData {ex.Message}");
 
                 ErrorModel errorModel = new ErrorModel
                 {
@@ -125,11 +153,64 @@ namespace NameSorter.Controllers
                     streamWriter.Close();
                     //return File(stream.ToArray(), "text/plain", "file.txt");
                     return File(stream.ToArray(), "text/plain", "sorted-names-list.txt");
-                }  
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Exception error was caught: {ex.Message}");
+                _logger.LogError($"Exception error was caught TextFileController:DownloadCacheSortedList {ex.Message}");
+
+                ErrorModel errorModel = new ErrorModel
+                {
+                    ErrorTitle = "System Error!",
+                    ErrorMessage = string.Format("We have encountered an Error. \nPlease contact your System Administrator."),
+                    RedirectAction = "Index",
+                    RedirectController = "TextFile"
+                };
+
+                return RedirectToAction("Index", "Error", errorModel);
+            }
+        }
+
+        /// <summary>
+        /// This will process the uploaded file then sort it by last name ascending 
+        /// </summary>
+        /// <param name="sortViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult ReadUploadFile(SortViewModel sortViewModel)
+        {
+            try
+            {
+                //create object List of NamesModel
+                var namesModels = new List<NamesModel>();
+
+                //create object List of string
+                var genericList = new List<string>(); 
+
+                if (ModelState.IsValid)
+                {
+                    //call the textfilerespository then return the List<NameModel>
+                    genericList = _textFileRepository.ProcessUploadFile(sortViewModel.TextFile);
+                    _logger.LogInformation($"Done processing upload file {sortViewModel.TextFile}");
+
+                    //call the nameSortRepository to process the genericList 
+                    namesModels = _nameSortRepository.sortGivenName(genericList);
+                    _logger.LogInformation("Done sorting name list");
+
+                    //store the namesModels object lsit to a memorycache
+                    _textFileRepository.CreateCacheMemory(namesModels);
+
+                }
+                else
+                {
+                    return View("Index");  
+                } 
+
+                return RedirectToAction("ViewLoadSortedData");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception error was caught TextFileController:ReadUploadFile {ex.Message}");
 
                 ErrorModel errorModel = new ErrorModel
                 {
