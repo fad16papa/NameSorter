@@ -142,8 +142,10 @@ namespace NameSorter.Controllers
                 //Get the data from cache memory
                 var cacheEntry = _memoryCache.Get<List<NamesModel>>(CacheKeys.Entry);
 
+                //Use memory stream to make stream file from stream writer
                 using (MemoryStream stream = new MemoryStream())
                 {
+                    //Write the data using stream writer
                     StreamWriter streamWriter = new StreamWriter(stream);
                     foreach (var item in cacheEntry)
                     {
@@ -152,7 +154,8 @@ namespace NameSorter.Controllers
 
                     streamWriter.Flush();
                     streamWriter.Close();
-                    //return File(stream.ToArray(), "text/plain", "file.txt");
+
+                    //return the download file named sorted-names-list.tx
                     return File(stream.ToArray(), "text/plain", "sorted-names-list.txt");
                 }
             }
