@@ -96,6 +96,7 @@ D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\TextFile\Index.cshtml.g.cs
+D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\TextFile\ViewLoadSortedData.cshtml.g.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\_ViewImports.cshtml.g.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\_ViewStart.cshtml.g.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.RazorTargetAssemblyInfo.cache
@@ -107,5 +108,3 @@ D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\staticwebas
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.dll
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.pdb
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.genruntimeconfig.cache
-D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.csprojAssemblyReference.cache
-D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\Razor\Views\TextFile\ViewLoadSortedData.cshtml.g.cs

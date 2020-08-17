@@ -62,7 +62,7 @@ namespace NameSorter.Repository.Service
                         LastName = splitObject[splitObject.Length - 1].ToString(),
                         //use string join to create single string object from givenNameObjectList array object
                         //then assign the value to the property of FirstName
-                        FirstName = string.Join(" ", givenNameObjectList.ToArray())
+                        GivenName = string.Join(" ", givenNameObjectList.ToArray())
                     };
 
                     //Then add the namesModel to List NamesModel Object 

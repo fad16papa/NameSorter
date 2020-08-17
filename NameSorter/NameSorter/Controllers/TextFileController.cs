@@ -58,16 +58,16 @@ namespace NameSorter.Controllers
 
         /// <summary>
         /// This will get the sorted list data in memory cache
+        /// The view contain sort serach and pagination
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> ViewLoadSortedData(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        public async Task<IActionResult> ViewLoadSortedData(string sortOrder, string currentFilter, string searchString, int? pageNumber, int CurrentItemCount)
         {
             try
             {
                 ViewData["CurrentSort"] = sortOrder;
-                ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-                ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+                ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "LastName" : "";
 
                 if (searchString != null)
                 {
@@ -78,8 +78,6 @@ namespace NameSorter.Controllers
                     searchString = currentFilter;
                 }
 
-                ViewData["CurrentFilter"] = searchString;
-
                 //Get the data in memory cache 
                 var sortedDataList = _memoryCache.Get<List<NamesModel>>(CacheKeys.Entry);
 
@@ -87,21 +85,23 @@ namespace NameSorter.Controllers
                 var model = sortedDataList.AsQueryable();
 
                 //search the list of users base in searchString 
+                ViewData["CurrentFilter"] = searchString;
+
                 //filter by lastname and firstname
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     model = sortedDataList.AsQueryable()
-                    .Where(x => x.LastName.Contains(searchString) || x.FirstName.Contains(searchString));
+                    .Where(x => x.LastName.Contains(searchString) || x.GivenName.Contains(searchString));
                 }
 
                 //implementing sorting, use switch case for sorting
                 switch (sortOrder)
                 {
-                    case "name_desc":
+                    case "LastName":
                         model = model.OrderByDescending(s => s.LastName);
                         break;
-                    case "Date":
-                        model = model.OrderByDescending(s => s.FirstName);
+                    case "GivenName":
+                        model = model.OrderByDescending(s => s.GivenName);
                         break;
                     default:
                         model = model.OrderBy(s => s.LastName);
@@ -146,7 +146,7 @@ namespace NameSorter.Controllers
                     StreamWriter streamWriter = new StreamWriter(stream);
                     foreach (var item in cacheEntry)
                     {
-                        await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.FirstName, item.LastName));
+                        await streamWriter.WriteLineAsync(String.Format("{0} {1}", item.GivenName, item.LastName));
                     }
 
                     streamWriter.Flush();

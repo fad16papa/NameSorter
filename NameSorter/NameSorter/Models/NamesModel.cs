@@ -9,8 +9,8 @@ namespace NameSorter.Models
     /// </summary>
     public class NamesModel
     {
-        [Display(Name = "Name")]
-        public string FirstName { get; set; }
+        [Display(Name = "Given Name")]
+        public string GivenName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
