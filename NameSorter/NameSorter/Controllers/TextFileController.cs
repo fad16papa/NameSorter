@@ -139,6 +139,7 @@ namespace NameSorter.Controllers
         {
             try
             {
+                //Get the data from cache memory
                 var cacheEntry = _memoryCache.Get<List<NamesModel>>(CacheKeys.Entry);
 
                 using (MemoryStream stream = new MemoryStream())
