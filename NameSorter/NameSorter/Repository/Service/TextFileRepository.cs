@@ -55,6 +55,20 @@ namespace NameSorter.Repository.Service
                     // Save data in cache.
                     _memoryCache.Set(CacheKeys.Entry, namesModelsList, cacheEntryOptions);
                 }
+                else
+                {
+                    //remove the old data in memorycache 
+                    _memoryCache.Remove(CacheKeys.Entry);
+
+                    //then save a new data in memory cache
+                    // Set cache options.
+                    var cacheEntryOptions = new MemoryCacheEntryOptions()
+                        // Keep in cache for this time, reset time if accessed.
+                        .SetSlidingExpiration(TimeSpan.FromMinutes(60));
+
+                    // Save data in cache.
+                    _memoryCache.Set(CacheKeys.Entry, namesModelsList, cacheEntryOptions);
+                }
             }
             catch (Exception ex)
             {
