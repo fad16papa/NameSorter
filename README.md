@@ -51,23 +51,23 @@ If you download the file you may run the application via local terminal or you c
 
 ## Step1 Upload the text file that need to be sorted. 
 
-![Step1]![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
+![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
 
 ## Step2 Once the uploading is done it will show the sorted names as ascending by its Last Name.
 
-![Step2]![capture 1](https://user-images.githubusercontent.com/13810195/90351539-16680c80-e073-11ea-94c9-955e55303b37.PNG)
+![capture 1](https://user-images.githubusercontent.com/13810195/90351539-16680c80-e073-11ea-94c9-955e55303b37.PNG)
 
 ## Step3 You can manipulate the sorting by ascending or descending by clicking the Given Name or Last Name it will be sorted automatically by its last name.
 
-![Step3]![Capture 2](https://user-images.githubusercontent.com/13810195/90351607-50d1a980-e073-11ea-95f2-a78578ec3d2d.PNG)
+![Capture 2](https://user-images.githubusercontent.com/13810195/90351607-50d1a980-e073-11ea-95f2-a78578ec3d2d.PNG)
 
 ## Step4 You may search by Given Name or Last Name by typing in the search box.
 
-![Step4]![Capture 3](https://user-images.githubusercontent.com/13810195/90351674-81194800-e073-11ea-9eeb-0bf743eb37f7.PNG)
+![Capture 3](https://user-images.githubusercontent.com/13810195/90351674-81194800-e073-11ea-9eeb-0bf743eb37f7.PNG)
 
 ## Step5 You can download the sorted file as ascending by clicking the Download File Link.
 
-![Step5]![Capture 4](https://user-images.githubusercontent.com/13810195/90351742-b9208b00-e073-11ea-9290-2dab4a1ae88f.PNG)
+![Capture 4](https://user-images.githubusercontent.com/13810195/90351742-b9208b00-e073-11ea-9290-2dab4a1ae88f.PNG)
 
 ### Built With
 
