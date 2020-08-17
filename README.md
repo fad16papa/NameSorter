@@ -47,40 +47,45 @@ Kindly visit the link to download [.Net Core 3.0](https://dotnet.microsoft.com/d
 
 ### Run Application 
 
-Just run the application file in local terminal or you can visit the link here [NameSorter](https://namesorter20200816224622.azurewebsites.net/)
+If you download the file you may run the application via local terminal or you can visit the link here [NameSorter](https://namesorter20200816224622.azurewebsites.net/)
 
-Just upload the text file with given names need to be sorted. 
+## Step1 Upload the text file that need to be sorted. 
+
 ![Step1]![Capture 1](https://user-images.githubusercontent.com/13810195/90330588-782b6680-dfe0-11ea-89f8-50e2bf1a2706.PNG)
 
-Once the uploading done it will show the sorted names by its Last Name.
+## Step2 Once the uploading is done it will show the sorted names as ascending by its Last Name.
+
 ![Step2]![capture 1](https://user-images.githubusercontent.com/13810195/90351539-16680c80-e073-11ea-94c9-955e55303b37.PNG)
 
-You can manipulate the sorting by ascending or descending by clicking the Given Name or Last Name it will be sorted automatically by its last name.
+## Step3 You can manipulate the sorting by ascending or descending by clicking the Given Name or Last Name it will be sorted automatically by its last name.
+
 ![Step3]![Capture 2](https://user-images.githubusercontent.com/13810195/90351607-50d1a980-e073-11ea-95f2-a78578ec3d2d.PNG)
 
-You may search by Given Name or Last Name by typing in the search box.
+## Step4 You may search by Given Name or Last Name by typing in the search box.
+
 ![Step4]![Capture 3](https://user-images.githubusercontent.com/13810195/90351674-81194800-e073-11ea-9eeb-0bf743eb37f7.PNG)
 
-You can download the sorted file as ascending by clicking the Download File Link.
+## Step5 You can download the sorted file as ascending by clicking the Download File Link.
+
 ![Step5]![Capture 4](https://user-images.githubusercontent.com/13810195/90351742-b9208b00-e073-11ea-9290-2dab4a1ae88f.PNG)
 
-## Built With
+### Built With
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - IDE 
 * [.Net Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) - .Net Core Run Time and Developer Pack
 * [Git Hub](https://github.com/fad16papa/NameSorter) - Code Repository
 * [Microsoft Azure](https://azure.microsoft.com/en-us/) - Cloud Service
 
-## Versioning
+### Versioning
 
 NameSorter Version 1.0.0
 
-## Authors
+### Authors
 
 * **Francis A. Decena** - *Initial work* - [fadthegreat](https://github.com/fad16papa)
 
 
-## Acknowledgments
+### Acknowledgments
 
 * Ace Pointer Singapore please visit https://acepointer.sg/
 * Coding assessment software developer
