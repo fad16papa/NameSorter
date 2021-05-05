@@ -82,6 +82,7 @@ D:\.NetCore\NameSorter\NameSorter\NameSorter\bin\Debug\netcoreapp3.0\ru\Microsof
 D:\.NetCore\NameSorter\NameSorter\NameSorter\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\.NetCore\NameSorter\NameSorter\NameSorter\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\.NetCore\NameSorter\NameSorter\NameSorter\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.csprojAssemblyReference.cache
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.AssemblyInfoInputs.cache
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.AssemblyInfo.cs
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.csproj.CoreCompileInputs.cache
@@ -107,4 +108,3 @@ D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\staticwebas
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.dll
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.pdb
 D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.genruntimeconfig.cache
-D:\.NetCore\NameSorter\NameSorter\NameSorter\obj\Debug\netcoreapp3.0\NameSorter.csprojAssemblyReference.cache

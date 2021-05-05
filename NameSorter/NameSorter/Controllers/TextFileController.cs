@@ -155,7 +155,7 @@ namespace NameSorter.Controllers
                     streamWriter.Flush();
                     streamWriter.Close();
 
-                    //return the download file named sorted-names-list.tx
+                    //return the download file named sorted-names-list.txt
                     return File(stream.ToArray(), "text/plain", "sorted-names-list.txt");
                 }
             }
